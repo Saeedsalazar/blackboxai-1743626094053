@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - ShoeBox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .input-error {
+            border-color: #f87171;
+        }
+        .error-message {
+            color: #f87171;
+            font-size: 0.875rem;
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+      <div class="container mx-auto px-6 flex justify-between items-center py-4">
+        <a href="index.html" class="text-2xl font-bold text-blue-600">ShoeBox</a>
+        <ul class="hidden md:flex space-x-8 text-lg">
+          <li><a href="index.html" class="hover:text-blue-500 transition">Inicio</a></li>
+          <li><a href="products.html" class="hover:text-blue-500 transition">Productos</a></li>
+          <li><a href="cart.html" class="hover:text-blue-500 transition">Carrito</a></li>
+          <li><a href="contact.html" class="hover:text-blue-500 transition font-semibold text-blue-600">Contacto</a></li>
+        </ul>
+        <button class="md:hidden focus:outline-none" onclick="toggleMobileNav()">
+          <i class="fas fa-bars text-2xl text-blue-600"></i>
+        </button>
+        <a href="cart.html" class="flex items-center text-blue-600 hover:underline ml-4">
+          <i class="fas fa-shopping-cart mr-2"></i>
+          <span id="cart-count" class="bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center">0</span>
+        </a>
+      </div>
+      <!-- Mobile Nav -->
+      <div id="mobile-nav" class="md:hidden bg-white py-4 px-6 transition max-h-0 overflow-hidden">
+        <ul class="space-y-4">
+          <li><a href="index.html" class="hover:text-blue-500 transition block">Inicio</a></li>
+          <li><a href="products.html" class="hover:text-blue-500 transition block">Productos</a></li>
+          <li><a href="cart.html" class="hover:text-blue-500 transition block">Carrito</a></li>
+          <li><a href="contact.html" class="hover:text-blue-500 transition block font-semibold text-blue-600">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Quick Purchase Section -->
+    <section class="bg-gray-100 py-12">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">Compra Rápida</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <img src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg" 
+                         alt="Zapatos Casuales" 
+                         class="w-full h-40 object-cover mb-4 rounded">
+                    <h3 class="text-xl font-semibold mb-2">Zapatos Casuales</h3>
+                    <p class="text-gray-600 mb-4">$59.99</p>
+                    <button onclick="addToCart('casual-shoes', 'Zapatos Casuales', 59.99, 'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg')" 
+                            class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition w-full">
+                        Añadir al Carrito
+                    </button>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <img src="https://images.pexels.com/photos/3761504/pexels-photo-3761504.jpeg" 
+                         alt="Zapatos Deportivos" 
+                         class="w-full h-40 object-cover mb-4 rounded">
+                    <h3 class="text-xl font-semibold mb-2">Zapatos Deportivos</h3>
+                    <p class="text-gray-600 mb-4">$79.99</p>
+                    <button onclick="addToCart('sports-shoes', 'Zapatos Deportivos', 79.99, 'https://images.pexels.com/photos/3761504/pexels-photo-3761504.jpeg')" 
+                            class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition w-full">
+                        Añadir al Carrito
+                    </button>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg" 
+                         alt="Zapatos Formales" 
+                         class="w-full h-40 object-cover mb-4 rounded">
+                    <h3 class="text-xl font-semibold mb-2">Zapatos Formales</h3>
+                    <p class="text-gray-600 mb-4">$99.99</p>
+                    <button onclick="addToCart('formal-shoes', 'Zapatos Formales', 99.99, 'https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg')" 
+                            class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition w-full">
+                        Añadir al Carrito
+                    </button>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="cart.html" class="bg-green-500 text-white px-8 py-3 rounded-lg hover:bg-green-600 transition inline-block">
+                    Ver Carrito y Comprar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Contáctanos</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4">Envíanos un Mensaje</h3>
+                        <form id="contact-form">
+                            <div class="mb-4">
+                                <label for="contact-name" class="block mb-2">Nombre*</label>
+                                <input type="text" id="contact-name" name="name" required
+                                       class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <div id="contact-name-error" class="error-message mt-1 hidden">Este campo es requerido</div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="contact-email" class="block mb-2">Correo Electrónico*</label>
+                                <input type="email" id="contact-email" name="email" required
+                                       class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <div id="contact-email-error" class="error-message mt-1 hidden">Ingrese un email válido</div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="contact-subject" class="block mb-2">Asunto</label>
+                                <input type="text" id="contact-subject" name="subject"
+                                       class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="contact-message" class="block mb-2">Mensaje*</label>
+                                <textarea id="contact-message" name="message" rows="4" required
+                                          class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                <div id="contact-message-error" class="error-message mt-1 hidden">Este campo es requerido</div>
+                            </div>
+                            <button type="submit" 
+                                    class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition w-full">
+                                Enviar Mensaje
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <h3 class="text-xl font-semibold mb-4">Información de Contacto</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-blue-500 mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-medium">Dirección</h4>
+                                    <p class="text-gray-600">Av. Principal 1234, Ciudad</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-alt text-blue-500 mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-medium">Teléfono</h4>
+                                    <p class="text-gray-600">+1 234 567 890</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-blue-500 mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-medium">Email</h4>
+                                    <p class="text-gray-600">info@shoebox.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-blue-500 mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-medium">Horario de Atención</h4>
+                                    <p class="text-gray-600">Lunes a Viernes: 9:00 - 18:00</p>
+                                    <p class="text-gray-600">Sábados: 10:00 - 14:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4">Nuestras Redes Sociales</h3>
+                        <div class="flex space-x-6">
+                            <a href="#" class="text-3xl text-blue-500 hover:text-blue-600 transition">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="text-3xl text-blue-400 hover:text-blue-500 transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-3xl text-pink-500 hover:text-pink-600 transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="text-3xl text-red-500 hover:text-red-600 transition">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4">Ubicación</h3>
+                        <div id="map" class="rounded-lg overflow-hidden">
+                            <!-- Google Maps iframe will be inserted here -->
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215373510324!2d-73.9878449241646!3d40.7484409713896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzU0LjQiTiA3M8KwNTknMTMuNyJX!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
+                                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">ShoeBox</h3>
+                    <p>Encuentra el calzado perfecto para cada ocasión.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-2xl hover:text-blue-400 transition"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-2xl hover:text-blue-400 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-2xl hover:text-blue-400 transition"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2023 ShoeBox. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (validateContactForm()) {
+                    // In a real application, you would send the form data to a server here
+                    alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+                    contactForm.reset();
+                }
+            });
+        });
+
+        function validateContactForm() {
+            let isValid = true;
+            
+            const name = document.getElementById('contact-name');
+            const email = document.getElementById('contact-email');
+            const message = document.getElementById('contact-message');
+            
+            if (!name.value.trim()) {
+                showError(name, 'contact-name-error', 'Este campo es requerido');
+                isValid = false;
+            } else {
+                hideError(name, 'contact-name-error');
+            }
+            
+            if (!email.value.trim() || !/^\S+@\S+\.\S+$/.test(email.value)) {
+                showError(email, 'contact-email-error', 'Ingrese un email válido');
+                isValid = false;
+            } else {
+                hideError(email, 'contact-email-error');
+            }
+            
+            if (!message.value.trim()) {
+                showError(message, 'contact-message-error', 'Este campo es requerido');
+                isValid = false;
+            } else {
+                hideError(message, 'contact-message-error');
+            }
+            
+            return isValid;
+        }
+
+        function showError(input, errorId, message) {
+            input.classList.add('input-error');
+            const errorElement = document.getElementById(errorId);
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+        }
+
+        function hideError(input, errorId) {
+            input.classList.remove('input-error');
+            document.getElementById(errorId).classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
