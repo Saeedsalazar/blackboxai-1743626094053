@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShoeBox - El mejor calzado para ti</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+      <div class="container mx-auto px-6 flex justify-between items-center py-4">
+        <a href="index.html" class="text-2xl font-bold text-blue-600">ShoeBox</a>
+        <ul class="hidden md:flex space-x-8 text-lg">
+          <li><a href="index.html" class="hover:text-blue-500 transition">Inicio</a></li>
+          <li><a href="products.html" class="hover:text-blue-500 transition">Productos</a></li>
+          <li><a href="cart.html" class="hover:text-blue-500 transition">Carrito</a></li>
+          <li><a href="contact.html" class="hover:text-blue-500 transition">Contacto</a></li>
+        </ul>
+        <button class="md:hidden focus:outline-none" onclick="toggleMobileNav()">
+          <i class="fas fa-bars text-2xl text-blue-600"></i>
+        </button>
+        <a href="cart.html" class="flex items-center text-blue-600 hover:underline ml-4">
+          <i class="fas fa-shopping-cart mr-2"></i>
+          <span id="cart-count" class="bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center">0</span>
+        </a>
+      </div>
+      <!-- Mobile Nav -->
+      <div id="mobile-nav" class="md:hidden bg-white py-4 px-6 transition max-h-0 overflow-hidden">
+        <ul class="space-y-4">
+          <li><a href="index.html" class="hover:text-blue-500 transition block">Inicio</a></li>
+          <li><a href="products.html" class="hover:text-blue-500 transition block">Productos</a></li>
+          <li><a href="cart.html" class="hover:text-blue-500 transition block">Carrito</a></li>
+          <li><a href="contact.html" class="hover:text-blue-500 transition block">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl font-bold mb-4">Bienvenido a ShoeBox</h1>
+            <p class="text-xl mb-8">Encuentra el mejor calzado para ti</p>
+            <button class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">
+                Ver Colección
+            </button>
+        </div>
+    </header>
+
+    <!-- Featured Products -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Nuestros Productos Destacados</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden product-card">
+                    <div class="h-64 bg-gray-200 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg" 
+                             alt="Zapatos Casuales" 
+                             class="w-full h-full object-cover product-image">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Zapatos Casuales</h3>
+                        <p class="text-gray-600 mb-4">Perfectos para el día a día</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$59.99</span>
+                            <button onclick="addToCart('casual-shoes', 'Zapatos Casuales', 59.99, 'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg')" 
+                                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition btn-primary">
+                                Añadir al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden product-card">
+                    <div class="h-64 bg-gray-200 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/3761504/pexels-photo-3761504.jpeg" 
+                             alt="Zapatos Deportivos" 
+                             class="w-full h-full object-cover product-image">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Zapatos Deportivos</h3>
+                        <p class="text-gray-600 mb-4">Para tus entrenamientos</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$79.99</span>
+                            <button onclick="addToCart('sports-shoes', 'Zapatos Deportivos', 79.99, 'https://images.pexels.com/photos/3761504/pexels-photo-3761504.jpeg')" 
+                                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition btn-primary">
+                                Añadir al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden product-card">
+                    <div class="h-64 bg-gray-200 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg" 
+                             alt="Zapatos Formales" 
+                             class="w-full h-full object-cover product-image">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Zapatos Formales</h3>
+                        <p class="text-gray-600 mb-4">Elegancia para ocasiones especiales</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$99.99</span>
+                            <button onclick="addToCart('formal-shoes', 'Zapatos Formales', 99.99, 'https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg')" 
+                                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition btn-primary">
+                                Añadir al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">ShoeBox</h3>
+                    <p>Encuentra el calzado perfecto para cada ocasión.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-2xl hover:text-blue-400 transition"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-2xl hover:text-blue-400 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-2xl hover:text-blue-400 transition"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2023 ShoeBox. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
